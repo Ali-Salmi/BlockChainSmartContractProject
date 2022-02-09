@@ -1,0 +1,229 @@
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- shop -->
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="./../../../assets/img/shop01.png" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>smart<br>Home</h3>
+            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /shop -->
+
+      <!-- shop -->
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="./../../../assets/img/shop03.png" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>Best Home<br>In Morocco</h3>
+            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /shop -->
+
+      <!-- shop -->
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="./../../../assets/img/shop02.png" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>Smart<br>Home</h3>
+            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /shop -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+
+      <!-- section title -->
+      <div class="col-md-12">
+        <div class="section-title">
+          <div class="col-md-6">
+            <div class="header-search">
+          <form>
+
+            <input [(ngModel)]="priceSelected" name="priceSelected" (ngModelChange)="search(priceSelected)" class="input" placeholder="Search here">
+            <button (click)="search(priceSelected)" class="search-btn" >Search</button>
+          </form>
+
+            </div>
+          </div>
+          <h3 class="title">New Immobiliers</h3>
+
+        </div>
+      </div>
+      <!-- /section title -->
+
+      <!-- Products tab & slick -->
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4 col-sm-6" *ngFor="let p of immobiliers" >
+            <div class="card my-2" *ngIf="p.announced==true&&p.proved==true">
+              <img [src]="p.image" (click)="selectImmobilier(p.id)"   alt="{{p.addressOwner}}"   width="200px" class="card-img-top"  style="cursor:pointer;"><!--[src]="p.image"  alt="{{p.name}}" (click)="selectProduct(p.id)"-->
+              <!--src="./assets/img/mais.png"-->
+              <div class="card-header">
+                <div class="card-title">
+                  <p>{{p.ville}}</p>
+                </div>
+              </div>
+              <div class="card-body">
+                <h6>le titer est {{p.titer}}</h6>
+                <h6>la Ville est {{p.ville}}</h6>
+                <h6>addressOwner est {{p.addressOwner}}</h6>
+                <p class="lead"> <i class="fab fa-ethereum"></i>&nbsp; {{p.price}} (ETH)</p>
+              </div>
+
+              <div class="row d-flex justify-content-center border-primary my-3">
+                <div class="col-md-6 ">
+
+                  <div style="display: flex;">
+                    <button (click)="Buy(p)" class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">BUY</button> &nbsp;&nbsp;&nbsp;
+                  <button class="btn btn-lg btn-outline-danger" (click)="selectImmobilier(p.id)" >DETAILS</button>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /container -->
+
+<!-- /SECTION -->
+
+<!-- HOT DEAL SECTION -->
+<div id="hot-deal" class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="hot-deal">
+          <ul class="hot-deal-countdown">
+            <li>
+              <div>
+                <h3>02</h3>
+                <span>Days</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>10</h3>
+                <span>Hours</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>34</h3>
+                <span>Mins</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>60</h3>
+                <span>Secs</span>
+              </div>
+            </li>
+          </ul>
+          <h2 class="text-uppercase">hot deal this week</h2>
+          <p>New Collection Up to 50% OFF</p>
+          <a class="primary-btn cta-btn" href="#">Shop now</a>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /HOT DEAL SECTION -->
+
+
+<!-- NEWSLETTER -->
+<div id="newsletter" class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="newsletter">
+          <p>Sign Up for the <strong>NEWSLETTER</strong></p>
+          <form>
+            <input class="input" type="email" placeholder="Enter Your Email">
+            <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+          </form>
+          <ul class="newsletter-follow">
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-pinterest"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /NEWSLETTER -->
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Buy Now</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+        <label>
+            Private key:
+          <input type="text" class="form-control" [(ngModel)]="ImmobilierAnn.recipentPrivateKey" name="ImmobilierAnn.recipentPrivateKey"  >
+        </label>
+
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-info" (click)="transfertImmobilier()">transfert</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>

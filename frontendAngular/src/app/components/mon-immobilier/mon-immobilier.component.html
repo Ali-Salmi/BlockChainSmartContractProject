@@ -1,0 +1,112 @@
+<!-- Products tab & slick -->
+<br>
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-3">
+        <button class="btn btn-outline-primary " (click)="open(addIm)"><i class="fa fa-plus"></i> Add Immobilier</button>
+    </div>
+    <div class="col-6"></div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-md-4 col-sm-6"*ngFor="let p of monimmobiliers" >
+      <div class="card my-2" ><!--*ngIf="p.announced==true"-->
+        <img [src]="p.image"      width="200px" class="card-img-top"  style="cursor:pointer;"><!--[src]="p.image"  alt="{{p.name}}" (click)="selectProduct(p.id)"-->
+        <!--src="./assets/img/mais.png"-->
+        <div class="card-header">
+          <div class="card-title">
+            <p>{{p.ville}}</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6>le titer est {{p.titer}}</h6>
+          <h6>la Ville est {{p.ville}}</h6>
+          <h6>addressOwner est {{p.addressOwner}}</h6>
+          <p class="lead"> <i class="fab fa-ethereum"></i> &nbsp;{{p.price}} (ETH)</p>
+        </div>
+
+        <div class="row d-flex justify-content-center border-primary my-3">
+         <div class="col-md-6 ">
+             <button (click)="AnnouncedChange(p.id)" class="btn btn-outline-primary btn-sm btn-block"  >
+
+               {{ p.announced==true ? "Remove Announce from market" : "Add Announce to market"}}
+             </button>
+             <button class="btn btn-info" (click)="changePrice(p.id)" (click)="open(mymodal)">Change Price</button>
+           </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+<!-- /container -->
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"> Change Price</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+        <label>
+            New Price:
+          <input type="text" class="form-control" [(ngModel)]="Immo.price" name="Immo.price"  >
+        </label>
+
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-info" (click)="changePriceNow()">Change</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>
+
+
+<ng-template #addIm let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add todo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form  >
+
+      <div class="form-group">
+        <label class="control-label">titre</label>
+        <input type="text" name="imm.titer" [(ngModel)]="imm.titer" class="form-control">
+      </div>
+      <div class="form-group">
+        <label class="control-label">surface</label>
+        <input type="text" name="imm.surface" [(ngModel)]="imm.surface" class="form-control">
+      </div>
+      <!--<select  [(ngModel)]="imm.addressOwner">
+        <option [value]="adressUserCurrent"></option>
+      </select>-->
+      <div class="form-group">
+        <label class="control-label">Ville</label>
+        <input type="text" name="imm.ville" [(ngModel)]="imm.ville" class="form-control">
+      </div>
+      <div class="form-group">
+        <label class="control-label">image</label>
+        <input type="file" class="form-control" (change)="onSelectImage($event)">
+      </div>
+      <div class="form-group">
+        <label class="control-label">price</label>
+        <input type="text" name="imm.price" [(ngModel)]="imm.price" class="form-control">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-info" (click)="addImmobilier()">Add</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>

@@ -1,0 +1,21 @@
+<div>
+  <table class="table" *ngIf="alluserData">
+    <tr>
+      <th class="">User Name</th>
+      <th class="">adress</th>
+      <!-- <th class="">adresscurentuser</th>-->
+      <!-- <th class="">les roles</th>-->
+
+    </tr>
+
+    <tr *ngFor="let c of alluserData._embedded.appUsers" >
+      <td class="">{{c.username}}</td>
+      <td class="">{{c.adress}}</td>
+      <!--<td class="">{{adresscurentuser.error.text}}</td>-->
+      <!--<td class="">{{rolesUsercurrent}}</td>-->
+      <td > <button routerLink="/immobilierUser/{{c.adress}}" class="btn btn-danger">Afficher Immobiliers</button></td>
+
+    </tr>
+
+  </table>
+</div>

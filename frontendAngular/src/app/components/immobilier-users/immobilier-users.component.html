@@ -1,0 +1,60 @@
+<!-- Products tab & slick -->
+<div class="col-md-12">
+
+  <div class="row">
+    <div class="col-md-4 col-sm-6"*ngFor="let p of userImmobiliers" >
+      <div class="card my-2" ><!--*ngIf="p.announced==true"-->
+        <img [src]="p.image"      width="200px" class="card-img-top"  style="cursor:pointer;"><!--[src]="p.image"  alt="{{p.name}}" (click)="selectProduct(p.id)"-->
+        <!--src="./assets/img/mais.png"-->
+        <div class="card-header">
+          <div class="card-title">
+            <p>{{p.ville}}</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6>le titre est {{p.titer}}</h6>
+          <h6>la Ville est {{p.ville}}</h6>
+          <h6>addressOwner est {{p.addressOwner}}</h6>
+          <p class="lead"> <i class="fab fa-ethereum"></i> &nbsp; {{p.price}} (ETH)</p>
+        </div>
+        <div class="row d-flex justify-content-center border-primary my-3">
+         <div class="col-md-6 ">
+          <button (click)="Buy(p)" class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">BUY</button>
+        </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Buy Now</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+        <label>
+            Private key:
+          <input type="text" class="form-control" [(ngModel)]="ImmobilierAnn.recipentPrivateKey" name="ImmobilierAnn.recipentPrivateKey"  >
+        </label>
+
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-info" (click)="transfertImmobilier()">transfert</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>

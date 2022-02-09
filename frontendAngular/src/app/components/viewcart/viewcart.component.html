@@ -1,0 +1,39 @@
+<!-- Products tab & slick -->
+<div class="col-md-12">
+
+  <div class="row">
+    <div class="col-md-4 col-sm-6"*ngFor="let p of AllimmobilierProvel" >
+      <div class="card my-2" ><!--*ngIf="p.announced==true"-->
+        <img [src]="p.image"      width="200px" class="card-img-top"  style="cursor:pointer;"><!--[src]="p.image"  alt="{{p.name}}" (click)="selectProduct(p.id)"-->
+        <!--src="./assets/img/mais.png"-->
+        <div class="card-header">
+          <div class="card-title">
+            <p>{{p.ville}}</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6>le titer est {{p.titer}}</h6>
+          <h6>la Ville est {{p.ville}}</h6>
+          <h6>addressOwner est {{p.addressOwner}}</h6>
+          <p class="lead"> <i class="fab fa-ethereum"></i> &nbsp;{{p.price}} (ETH)</p>
+        </div>
+
+        <div class="row d-flex justify-content-center border-primary my-3">
+         <div class="col-md-6 ">
+          <button class="btn btn-outline-success" (click)="ConfirmerImmobilierFromCart(p.id)"><i class="fas fa-check-double"></i></button>  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          <button class="btn btn-outline-danger"  (click)="DeleteImmobilierFromCart(p.id)"><i class="fas fa-trash-alt"></i></button>
+           </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+

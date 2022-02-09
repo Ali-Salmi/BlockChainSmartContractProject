@@ -1,0 +1,15 @@
+<div>
+  <h1 class="">votre adresse est </h1>
+  <table class="table" *ngIf="adresscurentuserData">
+
+
+    <tr  >
+
+      <td class="" *ngIf="adresscurentuserData.addressUser!=undefined">{{adresscurentuserData.addressUser}}</td>
+      <!--<td class="">{{rolesUsercurrent}}</td>-->
+      <td > <button (click)="YesConf(adresscurentuserData.addressUser)" class="btn btn-info">YES</button></td>
+      <td > <button routerLink="/login" class="btn btn-danger">NO</button></td>
+    </tr>
+
+  </table>
+</div>

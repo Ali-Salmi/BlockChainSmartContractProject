@@ -1,0 +1,32 @@
+<div class="col-md-6">
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Transfert Ethereum
+    </div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="Transfert(f.value)" >
+
+        <div class="form-group">
+          <label class="control-label">recipentAdress</label>
+          <input type="text" name="recipentAdress" ngModel class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">OwnerPrivateKey</label>
+          <input type="text" name="ownerPrivateKey" ngModel class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">price</label>
+          <input type="text" name="price" ngModel class="form-control">
+        </div>
+       <!-- <div class="form-group">
+          <label class="control-label">recipentAdress</label>
+          <input type="text" name="recipentAdress" ngModel class="form-control">
+        </div>-->
+
+        <button type="submit" class="btn btn-default btn-success" >Transfert</button>
+      </form>
+    </div>
+  </div>
+</div>

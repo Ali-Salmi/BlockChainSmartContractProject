@@ -1,0 +1,128 @@
+<!-- HEADER -->
+<header>
+  <!-- TOP HEADER -->
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-left">
+        <li><a href="#"><i class="fa fa-phone"></i> +212-51-25-34-00</a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> FSTT@email.com</a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Tanger Morocco</a></li>
+      </ul>
+      <ul class="header-links pull-right">
+        <li><a href="#"><i class="fa fa-dollar"></i> MAR</a></li>
+        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /TOP HEADER -->
+
+  <!-- MAIN HEADER -->
+  <div id="header">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <!-- LOGO -->
+        <div class="col-md-3">
+          <div class="header-logo">
+            <a routerLink="/" class="logo">
+              <img src="../../../assets/img/logo.png" alt="">
+            </a>
+          </div>
+        </div>
+        <!-- /LOGO -->
+
+        <!-- SEARCH BAR -->
+        <div class="col-md-6">
+          <div class="header-search">
+            <a *ngIf="!isAtheticated()" style="color: white"  routerLink="/login">Login</a>
+            <a *ngIf="isAtheticated()" style="color: white"  (click)="Logout()" class="btn">Logout</a>
+            <a *ngIf="isAtheticated()&&isAdressCurentExist()" style="color: white"   class="btn">Your Adress : {{adresscurentuser.addressUser}}</a>
+          </div>
+        </div>
+        <!-- /SEARCH BAR -->
+
+        <!-- ACCOUNT -->
+        <div class="col-md-3 clearfix">
+          <div class="header-ctn">
+
+
+            <!-- Cart -->
+            <div class="dropdown" *ngIf="AllimmobilierProvel.length !== 0 && isAdmin()">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="cursor: pointer;">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Your Cart</span>
+                <div class="qty">{{AllimmobilierProvel.length}}<!--{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}}--></div>
+              </a>
+              <div class="cart-dropdown" >
+                <div class="cart-list" *ngIf="AllimmobilierProve.length !== 0"><!--*ngIf="cartData.data[0].numInCart !== 0"-->
+                  <div class="product-widget" *ngFor="let c of AllimmobilierProvel; let i=index"><!--*ngFor="let c of cartData.data; let i=index"-->
+                   <div *ngIf="c.proved==false" >
+                    <div class="product-img">
+                      <img alt="" width="20px" [src]="c.image" (click)="selectImmobilier(c.id)"   alt="{{c.addressOwner}}" ><!--src="{{c.product?.image}}" -->
+                    </div>
+                    <div class="product-body">
+                      <h3 class="product-name"><a routerLink="/Immobilier/+{{c.id}}">{{c.titer?.titer}}</a></h3><!--href="#">{{c.product?.name}}-->
+
+                      <h4 class="product-price"><span class="qty">Titer : {{c.titer}} <p></p></span><i class="fab fa-ethereum"></i>&nbsp;{{c.price }} ETH</h4>
+                    </div>
+                     <button class="delete" (click)="DeleteImmobilierFromCart(c.id)"><i class="fa fa-close"></i></button>
+                      <button class="btn btn-outline-success" (click)="ConfirmerImmobilierFromCart(c.id)"><i class="fas fa-check-double"></i></button>  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                      <button class="btn btn-outline-danger"  (click)="DeleteImmobilierFromCart(c.id)"><i class="fas fa-trash-alt"></i></button>
+                   </div>
+                  </div>
+
+
+                </div>
+
+                <div class="cart-btns">
+
+                  <a routerLink="/allimmobiliernotproved/{{adresscurentuser}}">View All <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <!-- /Cart -->
+
+            <!-- Menu Toogle -->
+            <div class="menu-toggle">
+              <a href="#">
+                <i class="fa fa-bars"></i>
+                <span>Menu</span>
+              </a>
+            </div>
+            <!-- /Menu Toogle -->
+          </div>
+        </div>
+        <!-- /ACCOUNT -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
+
+<!-- NAVIGATION -->
+<nav id="navigation">
+  <!-- container -->
+  <div class="container">
+    <!-- responsive-nav -->
+    <div id="responsive-nav">
+      <!-- NAV -->
+      <ul class="main-nav nav py-3" *ngIf="adresscurentuser.addressUser!=undefined">
+        <li class="active"><a routerLink="/home/{{adresscurentuser.addressUser}}">Home</a></li>
+        <li><a  routerLink="/transaction">Transaction</a></li>
+        <li><a routerLink="/users">All Users</a></li>
+        <li><a routerLink="/monImmobilier/{{adresscurentuser.addressUser}}">Mon immobilier</a></li>
+        <li><a routerLink="/transfertEthereum/{{adresscurentuser.addressUser}}">transfert ethereum</a></li>
+        <li><a href="#">Contact Us</a></li>
+
+      </ul>
+      <!-- /NAV -->
+    </div>
+    <!-- /responsive-nav -->
+  </div>
+  <!-- /container -->
+</nav>
+<!-- /NAVIGATION -->

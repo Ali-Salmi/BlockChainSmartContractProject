@@ -1,0 +1,69 @@
+<!-- Products tab & slick -->
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-4 col-sm-6"  >
+      <div class="card my-2" *ngIf="immobilierCurrent.announced==true">
+        <img [src]="immobilierCurrent.image"      width="200px" class="card-img-top"  style="cursor:pointer;"><!--[src]="p.image"  alt="{{p.name}}" (click)="selectProduct(p.id)"-->
+        <!--src="./assets/img/mais.png"-->
+        <div class="card-header">
+          <div class="card-title">
+            <p>{{immobilierCurrent.ville}}</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6>le titer est {{immobilierCurrent.titer}}</h6>
+          <h6>la Ville est {{immobilierCurrent.ville}}</h6>
+          <h6>addressOwner est {{immobilierCurrent.addressOwner}}</h6>
+          <p class="lead"> <i class="fab fa-ethereum"></i>&nbsp;{{immobilierCurrent.price}} ({{ immobilierCurrent.price*4000 }} $)</p>
+        </div>
+
+        <div class="row d-flex justify-content-center border-primary my-3">
+         <!-- <div class="col-md-6 ">
+            <button class="btn btn-outline-primary btn-sm btn-block"  >
+              &lt;!&ndash;   [class.disabled]="p.quantity < 1"
+                  [class.btn-outline-danger]="p.quantity < 1"
+                  (click)="AddProduct(p.id)" [disabled]="p.quantity < 1"&ndash;&gt;
+              {{ immobilierCurrent.quantity < 1 ? "NO STOCK" : "Add To Cart"}}
+            </button>
+          </div>-->
+        </div>
+
+      </div>
+
+    </div>
+    <div  >
+      <div  *ngFor="let p of transactionsImmobilier" >
+
+        <div class="card my-2" ><!--*ngIf="p.immobilier.announced==true"-->
+
+          <div>
+            <h5>Id de transaction : {{p.id}}</h5>
+            <h6>From : {{p.addressOwner}}</h6>
+            <h6>To : {{p.addressrecipent}}</h6>
+
+            <h6><i class="fab fa-ethereum"></i>&nbsp;{{p.price}} ({{ p.price*4000 }} $)</h6>
+          </div>
+
+
+
+          <!-- <div class="row d-flex justify-content-center border-primary my-3">
+             <div class="col-md-6 ">
+               <button class="btn btn-outline-primary btn-sm btn-block"  >
+                 &lt;!&ndash;   [class.disabled]="p.quantity < 1"
+                     [class.btn-outline-danger]="p.quantity < 1"
+                     (click)="AddProduct(p.id)" [disabled]="p.quantity < 1"&ndash;&gt;
+                 {{ p.quantity < 1 ? "NO STOCK" : "Add To Cart"}}
+               </button>
+             </div>
+           </div>-->
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- /container -->
